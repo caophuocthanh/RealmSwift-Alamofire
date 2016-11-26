@@ -28,7 +28,7 @@ class APINavigation {
 }
 
 public enum APIMethod: String {
-    case OPTIONS, GET, HEAD, POST, PUT, PATCH, DELETE, TRACE, CONNECT
+    case GET, POST
 }
 
 class APIResponseData {
@@ -66,8 +66,6 @@ class APIResponseData {
                         self.nextURL = nextURL
                     }
                     break
-                default:
-                    break
                 }
             }
         }
@@ -78,16 +76,22 @@ class APIManager {
     
     static let networking = Networking()
     
-    class func request(dataSource: APIDataSouce, completion: ((responseData: APIResponseData) -> Void)) {
+    class func request(dataSource: APIDataSouce, completion: ((response: APIResponseData) -> Void)) {
+        
+        print("REQUEST: ", dataSource.identifier)
+        
         let method: APIMethod = dataSource.method
         switch method {
         case .POST:
             APIManager.networking.POST(dataSource.apiURL, parameters: dataSource.parameters) { (responseObject) in
                 switch responseObject {
                 case .Success(let response):
-                    completion(responseData: APIResponseData(response, method: .POST, identifier: dataSource.identifier))
+                    print("POST SUCCESS:", dataSource.identifier)
+                    completion(response: APIResponseData(response, method: .POST, identifier: dataSource.identifier))
                     break
                 default:
+                    print("POST FAILD:", dataSource.identifier)
+                    completion(response: APIResponseData(nil, method: .POST, identifier: dataSource.identifier))
                     break
                 }
             }
@@ -96,55 +100,17 @@ class APIManager {
             APIManager.networking.GET(dataSource.apiURL, parameters: dataSource.parameters) { (responseObject) in
                 switch responseObject {
                 case .Success(let response):
-                    completion(responseData: APIResponseData(response, method: .GET, identifier: dataSource.identifier))
+                    print("GET SUCCESS:", dataSource.identifier)
+                    completion(response: APIResponseData(response, method: .GET, identifier: dataSource.identifier))
                     break
                 default:
+                    print("GET FAILD:", dataSource.identifier)
+                    completion(response: APIResponseData(nil, method: .GET, identifier: dataSource.identifier))
                     break
                 }
             }
             break
-        default:
-            break
         }
     }
     
-    
-    class func login(facebookId: String, completion: ((user: UserModel) -> Void)) {
-        
-        let dataSource: APIDataSouce = APIDataSouce()
-        dataSource.apiURL = Configuration.API + Configuration.APP_VERSION + Configuration.APIEndPoint.LOGIN
-        dataSource.parameters = ["facebook_id": "\(facebookId)"]
-        dataSource.method = .POST
-        dataSource.identifier = "LOGIN"
-        
-        APIManager.request(dataSource) { (responseData) in
-            if let data: AnyObject = responseData.data {
-                let user = UserModel(value: data)
-                completion(user: user)
-                return
-            }
-            completion(user: UserModel())
-            return
-        }
-    }
-    
-    
-    class func getSongsByArtistId(id: Int, completion: ((responseData: APIResponseData) -> Void)) {
-        
-        let dataSource: APIDataSouce = APIDataSouce()
-        dataSource.apiURL = Configuration.API + Configuration.APP_VERSION + Configuration.APIEndPoint.FIND_SONGS_BY_ARTIST_ID + "\(id)"
-        dataSource.method = .GET
-        dataSource.identifier = "FIND_SONGS_BY_ARTIST_ID"
-        
-        APIManager.request(dataSource) { (responseData) in
-            if let data = responseData.data as? NSArray {
-                for object:AnyObject in data {
-                    let song: SongModel = SongModel(value: object)
-                    RealmStore.add(song)
-                }
-            }
-            completion(responseData: responseData)
-        }
-        
-    }
 }

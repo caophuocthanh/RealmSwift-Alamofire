@@ -6,6 +6,7 @@ use_frameworks!
 project 'RealmManager.xcodeproj'
 
 def shared_pods
+
 pod 'RealmSwift'
 
 pod 'Alamofire', '3.5.0'

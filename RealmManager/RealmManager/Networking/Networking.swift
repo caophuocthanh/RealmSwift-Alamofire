@@ -73,6 +73,7 @@ class Networking {
                 print("GET Success Request: ", self.request?.request?.URLString)
                 completion(responseObject: Result.Success(response.result.value))
             } else {
+                print("GET Faild Request: ", self.request?.request?.URLString)
                 if let response = response.response {
                     completion(responseObject: Result.Failure(response.statusCode))
                 } else {

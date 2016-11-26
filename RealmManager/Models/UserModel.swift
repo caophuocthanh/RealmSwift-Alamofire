@@ -19,4 +19,5 @@ class UserModel: BaseModel {
     dynamic var cover       : FileModel?
     dynamic var record_count: Int = 0
     dynamic var listen_count: Int = 0
+
 }

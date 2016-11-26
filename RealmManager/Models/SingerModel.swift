@@ -11,8 +11,8 @@ import RealmSwift
 
 class SingerModel: BaseModel {
     
-    dynamic var avatar: String?
-    dynamic var avatar_id: String?
+    dynamic var avatar: FileModel?
+    dynamic var avatar_id: Int = 0
     let covers = List<CoverModel>()
     dynamic var name: String! = ""
     dynamic var search_count: Double = 0

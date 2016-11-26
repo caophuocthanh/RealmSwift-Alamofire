@@ -7,138 +7,109 @@
 //
 
 import UIKit
-import RealmSwift
 
 class ViewController: UIViewController {
     
-    weak var subscription: NotificationToken?
-    weak var subscription1: NotificationToken?
+    let _collectionView = SongCollectionView()
+    let _textField = UITextField()
+    let _buttonLike = UIButton()
+    
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         
-        let pendingPhotos = RealmStore.models(UserModel.self).filter("facebook_id == '1620640691594201'")
+        self.view.addSubview(_collectionView)
+        self._textField.backgroundColor = UIColor.orangeColor()
+        self._textField.placeholder = "id song"
+        self._textField.textAlignment = .Center
+        self.view.addSubview(_textField)
         
-        let artists = RealmStore.models(SongModel.self)
         
-        print("pendingPhotos", pendingPhotos)
+        self._buttonLike.backgroundColor = UIColor.redColor()
+        self._buttonLike.setTitle("SUBMIT LIKE", forState: .Normal)
+        self.view.addSubview(_buttonLike)
         
-        print("artists", artists)
+        self._buttonLike.addTarget(self, action: #selector(self.didTouchLikeButton), forControlEvents: .TouchUpInside)
         
-        self.subscription = pendingPhotos.addNotificationBlock { changes in
-            switch changes {
-            case .Initial( _):
-                print("====>>>>>> Initial:")
-                break
-            case .Update( _, let deletions, let insertions, let modifications):
-                print("==>>>>>>>> Update: ", deletions, insertions, modifications)
-                break
-            case .Error(let err):
-                // An error occurred while opening the Realm file on the background worker thread
-                fatalError("\(err)")
-                break
+        
+        self._collectionView.translatesAutoresizingMaskIntoConstraints = false
+        self._textField.translatesAutoresizingMaskIntoConstraints = false
+        self._buttonLike.translatesAutoresizingMaskIntoConstraints = false
+        
+        let views = ["v1": self._collectionView,
+                     "v2": self._textField,
+                     "v3": self._buttonLike]
+        
+        self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(
+            "H:|-0-[v1]-0-|",
+            options: [],
+            metrics: nil,
+            views: views))
+        
+        self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(
+            "H:|-[v2]-|",
+            options: [],
+            metrics: nil,
+            views: views))
+        
+        self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(
+            "H:|-[v3]-|",
+            options: [],
+            metrics: nil,
+            views: views))
+        
+        self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(
+            "V:|-0-[v1]-[v2(40)]-10-[v3(40)]-20-|",
+            options: [],
+            metrics: nil,
+            views: views))
+        
+        
+        // LOGIN
+        self.login()
+    }
+    
+    func login() {
+        print("-------------LOGIN-------------")
+        Service.login("1620640691594201") { (user) in
+            
+            print("user:", user)
+            
+            self.getSongs()
+        }
+    }
+    
+    func getSongs() {
+        print("-------------GET SONGS BY ARTIST ID 561-------------")
+        
+        Service.getSongsByArtistId(561, store: { (store) in
+            print("----> LOAD CACHE DATABASE SONGS....")
+            self._collectionView.songs = store
+        }) { (songs) in
+            print("----> LOAD SERVICE RESPONSE SONGS....")
+            if songs.count > 0 {
+                self._collectionView.songs = songs
+            } else {
+                print("----> LOAD SERVICE RESPONSE SONGS NULL....")
             }
         }
         
-        APIManager.login("1620640691594201") { (data) in
-            print("LOGIN !!!: ", data)
-            //RealmStore.add(data)
-        }
-        
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(10 * Double(NSEC_PER_SEC))), dispatch_get_main_queue()) {
-            
-            let p = RealmStore.models(UserModel.self)
-            print("pendingPhotos", pendingPhotos)
-            try! RealmStore.write({
-                p.first?.email = "S<HGJHFGSKJHFGJSHGFLJSKHFGKJSHG"
-            })
-        }
-        
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(10 * Double(NSEC_PER_SEC))), dispatch_get_main_queue()) {
-            APIManager.getSongsByArtistId(516, completion: { (responseData) in
-                print(responseData.identifier)
-//                if let data = responseData.data as? NSArray {
-//                    for item in data {
-//                        print("getArtistById:", item)
-//                    }
-//                }
-            })
-        }
-        //
-        //        let a = UserModel()
-        //        a.id = 1
-        //        a.created_at = "sdfsdf"
-        //
-        //        let b = UserModel()
-        //        b.id = 2
-        //        b.created_at = "sdfsdfsdf"
-        //
-        //        let c = UserModel()
-        //        c.id = 3
-        //        c.created_at = "sdfsdfsdf"
-        //
-        //        RealmStore.add(a)
-        //        RealmStore.add(b)
-        //        RealmStore.add(c)
-        
-        //        let pendingPhotos = RealmStore.models(UserModel.self)
-        //
-        //        print("pendingPhotos", pendingPhotos)
-        //
-        //        subscription = pendingPhotos.addNotificationBlock { changes in
-        //            switch changes {
-        //            case .Initial( _):
-        //                print("====>>>>>> Initial:")
-        //                break
-        //            case .Update( _, let deletions, let insertions, let modifications):
-        //                print("==>>>>>>>> Update: ", deletions, insertions, modifications)
-        //                break
-        //            case .Error(let err):
-        //                // An error occurred while opening the Realm file on the background worker thread
-        //                fatalError("\(err)")
-        //                break
-        //            }
-        //        }
-        //
-        //        print("\n\n////////////////   addNotificationBlock   ////////////////\n\n")
-        //
-        //        print("\n\n////////////////////////////////\n\n")
-        //
-        //        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(10 * Double(NSEC_PER_SEC))), dispatch_get_main_queue()) {
-        //
-        //            print("///////////////////////////////// after 10s ////////////////////////////////////////")
-        //
-        //            let myPuppy = RealmStore.models(UserModel.self).filter("id == 1")
-        //
-        //            self.subscription1 = myPuppy.addNotificationBlock { changes in
-        //
-        //                switch changes {
-        //                case .Initial(_):
-        //                    print("====>>>>>> Initial:")
-        //                    break
-        //                case .Update(_, let deletions, let insertions, let modifications):
-        //                    print("==>>>>>>>> Update: ", deletions, insertions, modifications)
-        //                    break
-        //                case .Error(let err):
-        //                    // An error occurred while opening the Realm file on the background worker thread
-        //                    fatalError("\(err)")
-        //                    break
-        //                }
-        //            }
-        //
-        //            if let bd: UserModel = myPuppy.first {
-        //                try! RealmStore.write({
-        //                    bd.slug = "HDJSKAJHGFHGASF"
-        //                })
-        //            }
-        //        }
     }
     
-    deinit {
-        subscription?.stop()
-        subscription1?.stop()
+    
+    func didTouchLikeButton() {
+        if let id = self._textField.text {
+            let a = RealmStore.models(SongModel.self).filter("id == \(id)")
+            
+            if let c: SongModel = a.first {
+                try! RealmStore.write({
+                    c.isFavorited = !c.isFavorited
+                })
+                
+            } else {
+                print("NUL NUL")
+            }
+        }
     }
     
     override func didReceiveMemoryWarning() {

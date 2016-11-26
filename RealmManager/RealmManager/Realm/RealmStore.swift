@@ -9,6 +9,8 @@
 import UIKit
 import RealmSwift
 
+public typealias RealmStoreNotificationToken = NotificationToken
+
 class RealmStore {
     
     /// new realm
@@ -19,7 +21,7 @@ class RealmStore {
      
      - parameter model: object (BaseModel)
      */
-    static func add(model: BaseModel) {
+    static func add(model: Object) {
         try! RealmStore.write {
             RealmStore.store.add(model, update: true)
         }
@@ -33,7 +35,7 @@ class RealmStore {
      - returns: List Model Result (BaseModel)
      */
     static func models<T: Object>(type: T.Type) -> Results<T> {
-        return  RealmStore.store.objects(T).sorted("created_at", ascending: false)
+        return  RealmStore.store.objects(T)
     }
     
     /**
