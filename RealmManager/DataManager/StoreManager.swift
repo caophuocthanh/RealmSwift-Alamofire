@@ -15,9 +15,8 @@ class StoreManager {
         type: T.Type,
         dataSource: APIDataSouce,
         complete: ((data: [T]?) -> Void)) {
-        
+
         let _store = RealmStore.models(StoreModel.self).filter("identifier =='\(dataSource.identifier)'").first
-        
         if let models = _store?.models {
             var response = [T]()
             for item in  models {
@@ -26,8 +25,10 @@ class StoreManager {
                 }
             }
             complete(data: response)
+            return
         }
         complete(data: nil)
+        return
     }
     
     class func service<T: Object where T: BaseModel >(
