@@ -14,33 +14,58 @@ class StoreManager {
     class func local<T: Object where T: BaseModel >(
         type: T.Type,
         dataSource: APIDataSouce,
-        complete: ((data: [T]) -> Void)) {
+        complete: ((data: [T]?) -> Void)) {
         
         let _store = RealmStore.models(StoreModel.self).filter("identifier =='\(dataSource.identifier)'").first
-        var response = [T]()
         
         if let models = _store?.models {
+            var response = [T]()
             for item in  models {
-                if let model: Results<T> = RealmStore.models(T.self).filter("id == \(item.id)") {
-                    response.append(model.first! as T)
+                if let model = RealmStore.models(T.self).filter("id == \(item.id)").first {
+                    response.append(model)
                 }
             }
+            complete(data: response)
         }
-        complete(data: response)
+        complete(data: nil)
     }
     
     class func service<T: Object where T: BaseModel >(
         type: T.Type,
         dataSource: APIDataSouce,
-        complete: ((data: [AnyObject]) -> Void)) {
+        complete: ((data: [T]?) -> Void)) {
         
         APIManager.request(dataSource) { (data) in
             if let data = data.data as? [AnyObject] {
-                complete(data: data)
+                let store = StoreModel()
+                store.identifier = dataSource.identifier
+                var genericObjects = [T]()
+                for (index, object) in data.enumerate() {
+                    let genericObject = T()
+                    if let obj:T = genericObject.map(type, value: object) {
+                        RealmStore.add(obj)
+                        genericObjects.append(obj)
+                        store.addNote(type, object: obj, index: index)
+                    }
+                }
+                store.add()
+                complete(data: genericObjects)
+                return
             } else if let data: AnyObject = data.data {
-                complete(data: [data])
+                let store = StoreModel()
+                store.identifier = dataSource.identifier
+                let genericObject = T()
+                if let obj:T = genericObject.map(type, value: data) {
+                    RealmStore.add(obj)
+                    store.addNote(type, object: obj, index: 0)
+                    complete(data: [obj])
+                    return
+                }
+                complete(data: nil)
+                return
             } else {
-                complete(data: [])
+                complete(data: nil)
+                return
             }
         }
     }
@@ -48,8 +73,8 @@ class StoreManager {
     class func data<T: Object where T: BaseModel >(
         type: T.Type,
         dataSource: APIDataSouce,
-        local: ((data: [T]) -> Void),
-        service: ((data: [AnyObject]) -> Void)) {
+        local: ((data: [T]?) -> Void),
+        service: ((data: [T]?) -> Void)) {
         
         StoreManager.local(type, dataSource: dataSource) { (data) in
             local(data: data)

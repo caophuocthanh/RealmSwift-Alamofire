@@ -9,7 +9,7 @@
 import UIKit
 
 class ABViewComtrollerViewController: UIViewController {
-    
+
     let _collectionView = SongCollectionView()
     let _textField = UITextField()
     let _buttonLike = UIButton()
@@ -84,6 +84,7 @@ class ABViewComtrollerViewController: UIViewController {
         // LOGIN
         self.getSongs()
     }
+
     
     func getSongs() {
         print("-------------GET SONGS BY ARTIST ID 561-------------")
@@ -107,15 +108,15 @@ class ABViewComtrollerViewController: UIViewController {
     
     func didTouchLikeButton() {
         if let id = self._textField.text {
-            if let _id = Int(id) {
-                if let a = SongModel.object(SongModel.self, id: _id) {
-                    try! RealmStore.write({
-                        a.isFavorited = !a.isFavorited
-                    })
-                    
-                } else {
-                    print("NUL NUL")
-                }
+            let a = RealmStore.models(SongModel.self).filter("id == \(id)")
+            
+            if let c: SongModel = a.first {
+                try! RealmStore.write({
+                    c.isFavorited = !c.isFavorited
+                })
+                
+            } else {
+                print("NUL NUL")
             }
         }
     }
@@ -124,5 +125,5 @@ class ABViewComtrollerViewController: UIViewController {
         super.didReceiveMemoryWarning()
         print("didReceiveMemoryWarning")
     }
-    
+
 }

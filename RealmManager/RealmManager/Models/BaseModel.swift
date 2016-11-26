@@ -19,7 +19,7 @@ public enum ObjectChanged {
 
 /// BaseModel
 class BaseModel: Object {
-
+    
     dynamic var id = 0
     dynamic var created_at  : String?
     dynamic var updated_at  : String?
@@ -29,7 +29,26 @@ class BaseModel: Object {
     }
     
     func add() {
+        print("ADD OBJECT:", self)
         RealmStore.add(self)
+    }
+    
+    func map<T: BaseModel>(type: T.Type, value: AnyObject) -> T? {
+        if let value: [String : AnyObject] = value as? [String : AnyObject] {
+            
+            // FUCK
+            
+            let genneric = type.init()
+            if genneric.isKindOfClass(SongModel) {
+                return SongModel(value: value) as? T
+            } else if genneric.isKindOfClass(UserModel) {
+                return UserModel(value: value) as? T
+            }
+            
+            // FUCK
+            return nil
+        }
+        return nil
     }
     
     func changed<T: BaseModel>(type: T.Type, block: (_: T?, _: ObjectChanged) -> Void) ->

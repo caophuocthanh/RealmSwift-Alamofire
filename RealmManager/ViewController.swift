@@ -87,7 +87,7 @@ class ViewController: UIViewController {
     func login() {
         print("-------------LOGIN-------------")
         Service.login("1620640691594201") { (user) in
-            print("user:", user)
+            print("USER:", user.first)
             self.getSongs()
         }
     }
@@ -116,14 +116,15 @@ class ViewController: UIViewController {
     
     func didTouchLikeButton() {
         if let id = self._textField.text {
-            if let _id = Int(id) {
-                if let a = SongModel.object(SongModel.self, id: _id) {
-                    try! RealmStore.write({
-                        a.isFavorited = !a.isFavorited
-                    })
-                } else {
-                    print("NUL NUL")
-                }
+            let a = RealmStore.models(SongModel.self).filter("id == \(id)")
+            
+            if let c: SongModel = a.first {
+                try! RealmStore.write({
+                    c.isFavorited = !c.isFavorited
+                })
+                
+            } else {
+                print("NUL NUL")
             }
         }
     }
