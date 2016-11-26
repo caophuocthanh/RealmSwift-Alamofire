@@ -82,34 +82,23 @@ class ABViewComtrollerViewController: UIViewController {
         
         
         // LOGIN
-        self.login()
-    }
-    
-    func login() {
-        print("-------------LOGIN-------------")
-        Service.login("1620640691594201") { (user) in
-            
-            print("user:", user)
-            
-            self.getSongs()
-        }
+        self.getSongs()
     }
     
     func getSongs() {
         print("-------------GET SONGS BY ARTIST ID 561-------------")
         
         Service.getSongsByArtistId(561, store: { (store) in
-            print("----> LOAD CACHE DATABASE SONGS....")
+            print("----> LOAD CACHE DATABASE SONGS....:", store.count)
             self._collectionView.songs = store
         }) { (songs) in
-            print("----> LOAD SERVICE RESPONSE SONGS....")
+            print("----> LOAD SERVICE RESPONSE SONGS....:", songs.count)
             if songs.count > 0 {
                 self._collectionView.songs = songs
             } else {
                 print("----> LOAD SERVICE RESPONSE SONGS NULL....")
             }
         }
-        
     }
     
     func didTouchPushButton() {

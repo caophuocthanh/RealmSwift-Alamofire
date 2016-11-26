@@ -103,7 +103,7 @@ class SongCollectionViewCell: BaseCollectionViewCell {
     
     
     override class func getCellSize(model: BaseModel) -> CGSize {
-        return CGSizeMake(UIScreen.mainScreen().bounds.width, 320)
+        return CGSizeMake(UIScreen.mainScreen().bounds.width, 220)
     }
     
     

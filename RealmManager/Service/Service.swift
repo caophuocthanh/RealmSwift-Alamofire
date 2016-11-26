@@ -65,27 +65,5 @@ class Service {
             completion(songs: songs)
         }
     }
-    
-    
-    //    class func getSongsByArtistId(id: Int, completion: ((store: StoreModel) -> Void)) {
-    //
-    //        let dataSource: APIDataSouce = DataSource.Song.findSongsByArtistId(id)
-    //
-    //        APIManager.request(dataSource) { (response) in
-    //            let store = StoreModel()
-    //            store.identifier = dataSource.identifier
-    //
-    //            if let data = response.data as? [AnyObject] {
-    //                for (index, object) in data.enumerate() {
-    //                    let model = Model()
-    //                    let song = SongModel(value: object)
-    //                    song.addStore()
-    //                    model.initData(song.id, ObjectKind.Song.hashValue, index: index)
-    //                    model.addStore()
-    //                    store.models.append(model)
-    //                }
-    //            }
-    //            completion(store: store)
-    //        }
-    //    }
+ 
 }
