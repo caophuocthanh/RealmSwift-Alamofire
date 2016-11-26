@@ -127,7 +127,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     func login() {
         print("-------------LOGIN-------------")
-        Service.login("1620640691594201") { (user) in
+        Service.authenticate("1620640691594201") { (user) in
             print("USER:", user.first)
             self.getSongs()
         }
@@ -136,7 +136,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     func getSongs() {
         print("-------------GET SONGS BY ARTIST ID 561-------------")
         
-        Service.getSongsByArtistId(561, store: { (store) in
+        Service.Songs.findByArtistId(561, store: { (store) in
             print("----> LOAD CACHE DATABASE SONGS....:", store.count)
             self._collectionView.songs = store
         }) { (songs) in

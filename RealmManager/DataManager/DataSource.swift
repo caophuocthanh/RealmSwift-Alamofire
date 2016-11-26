@@ -28,9 +28,9 @@ class DataSource {
 // MARK: - Song Data Source
 extension DataSource {
     
-    class Song {
+    class Songs {
         
-        static func findSongsByArtistId(id: Int) -> APIDataSouce {
+        static func findByArtistId(id: Int) -> APIDataSouce {
             let dataSource: APIDataSouce = APIDataSouce()
             dataSource.apiURL = Configuration.API + Configuration.APP_VERSION + Configuration.APIEndPoint.FIND_SONGS_BY_ARTIST_ID + "\(id)"
             dataSource.method = .GET

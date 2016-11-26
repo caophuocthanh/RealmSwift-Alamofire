@@ -10,7 +10,7 @@ import UIKit
 
 class Service {
     
-    class func login(
+    class func authenticate(
         facebookId: String,
         completion: ((user: [UserModel]) -> Void)) {
         // Data Source
@@ -22,19 +22,22 @@ class Service {
         }
     }
     
-    class func getSongsByArtistId(
-        id: Int,
-        store: ((data: [SongModel]) -> Void),
-        service: ((data: [SongModel]) -> Void)) {
+    class Songs {
         
-        // Data Source
-        let dataSource: APIDataSouce = DataSource.Song.findSongsByArtistId(id)
-        
-        // Get data
-        StoreManager.data(SongModel.self, dataSource: dataSource, local: { (data) in
-            store(data: data ?? [])
-        }) { (data) in
-            service(data: data ?? [])
+        class func findByArtistId(
+            id: Int,
+            store: ((data: [SongModel]) -> Void),
+            service: ((data: [SongModel]) -> Void)) {
+            
+            // Data Source
+            let dataSource: APIDataSouce = DataSource.Songs.findByArtistId(id)
+            
+            // Get data
+            StoreManager.data(SongModel.self, dataSource: dataSource, local: { (data) in
+                store(data: data ?? [])
+            }) { (data) in
+                service(data: data ?? [])
+            }
         }
     }
     

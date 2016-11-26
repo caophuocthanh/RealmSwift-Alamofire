@@ -89,7 +89,7 @@ class ABViewComtrollerViewController: UIViewController {
     func getSongs() {
         print("-------------GET SONGS BY ARTIST ID 561-------------")
         
-        Service.getSongsByArtistId(561, store: { (store) in
+        Service.Songs.findByArtistId(561, store: { (store) in
             print("----> LOAD CACHE DATABASE SONGS....:", store.count)
             self._collectionView.songs = store
         }) { (songs) in
