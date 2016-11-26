@@ -11,49 +11,34 @@ import RealmSwift
 
 class StoreManager {
     
-    class func data<T: BaseModel>(type: T.Type,
-                    dataSource: APIDataSouce,
-                    store: ((store: [T]) -> Void),
-                    service: ((service: [SongModel]) -> Void)) {
+    class func local<T: Object where T: BaseModel >(type: T.Type,
+                     dataSource: APIDataSouce,
+                     complete: ((data: [T]) -> Void)) {
         
         let _store = RealmStore.models(StoreModel.self).filter("identifier =='\(dataSource.identifier)'").first
         var response = [T]()
-
+        
         if let models = _store?.models {
             for item in  models {
                 if let model: Results<T> = RealmStore.models(T.self).filter("id == \(item.id)") {
-                    response.append(model.first!)
+                    response.append(model.first! as T)
                 }
             }
         }
-        
-        store(store: response)
-        
-        APIManager.request(dataSource) { (response) in
-            
-            var objects = [SongModel]()
-            if let data = response.data as? [AnyObject] {
-                
-                let store = StoreModel()
-                store.identifier = dataSource.identifier
-                for (index, item) in data.enumerate() {
-                    let model = Model()
-                    let object = SongModel(value: item)
-                    
-                    // save song
-                    object.addStore()
-                    
-                    model.initData(object.id, T.self, index: index)
-                    objects.append(object)
-                    
-                    // Save store
-                    store.models.append(model)
-                }
-                store.addStore()
-            }
-            service(service: objects)
-            
-        }
+        complete(data: response)
     }
     
+    class func service<T: Object where T: BaseModel >(type: T.Type,
+                       dataSource: APIDataSouce,
+                       complete: ((data: [AnyObject]) -> Void)) {
+        APIManager.request(dataSource) { (data) in
+            if let data = data.data as? [AnyObject] {
+                complete(data: data)
+            } else if let data: AnyObject = data.data {
+                complete(data: [data])
+            } else {
+                complete(data: [])
+            }
+        }
+    }
 }

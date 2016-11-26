@@ -76,41 +76,36 @@ class APIManager {
     
     static let networking = Networking()
     
-    class func request(dataSource: APIDataSouce, completion: ((response: APIResponseData) -> Void)) {
-        
-        print("REQUEST: ", dataSource.identifier)
-        
+    class func request(dataSource: APIDataSouce, completion: ((data: APIResponseData) -> Void))  -> NSURLSessionTask? {
+        print("request: ", dataSource.identifier)
         let method: APIMethod = dataSource.method
         switch method {
         case .POST:
-            APIManager.networking.POST(dataSource.apiURL, parameters: dataSource.parameters) { (responseObject) in
+            return APIManager.networking.POST(dataSource.apiURL, parameters: dataSource.parameters) { (responseObject) in
                 switch responseObject {
                 case .Success(let response):
                     print("POST SUCCESS:", dataSource.identifier)
-                    completion(response: APIResponseData(response, method: .POST, identifier: dataSource.identifier))
+                    completion(data: APIResponseData(response, method: .POST, identifier: dataSource.identifier))
                     break
                 default:
                     print("POST FAILD:", dataSource.identifier)
-                    completion(response: APIResponseData(nil, method: .POST, identifier: dataSource.identifier))
+                    completion(data: APIResponseData(nil, method: .POST, identifier: dataSource.identifier))
                     break
                 }
             }
-            break
         case .GET:
-            APIManager.networking.GET(dataSource.apiURL, parameters: dataSource.parameters) { (responseObject) in
+            return APIManager.networking.GET(dataSource.apiURL, parameters: dataSource.parameters) { (responseObject) in
                 switch responseObject {
                 case .Success(let response):
                     print("GET SUCCESS:", dataSource.identifier)
-                    completion(response: APIResponseData(response, method: .GET, identifier: dataSource.identifier))
+                    completion(data: APIResponseData(response, method: .GET, identifier: dataSource.identifier))
                     break
                 default:
                     print("GET FAILD:", dataSource.identifier)
-                    completion(response: APIResponseData(nil, method: .GET, identifier: dataSource.identifier))
+                    completion(data: APIResponseData(nil, method: .GET, identifier: dataSource.identifier))
                     break
                 }
             }
-            break
         }
     }
-    
 }

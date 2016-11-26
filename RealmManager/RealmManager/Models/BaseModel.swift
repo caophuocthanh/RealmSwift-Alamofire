@@ -28,7 +28,7 @@ class BaseModel: Object {
         return "id"
     }
     
-    func addStore() {
+    func add() {
         RealmStore.add(self)
     }
     

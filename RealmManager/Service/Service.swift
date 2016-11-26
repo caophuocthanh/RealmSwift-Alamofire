@@ -17,7 +17,7 @@ class Service {
         APIManager.request(dataSource) { (response) in
             if let data: AnyObject = response.data {
                 let user = UserModel(value: data)
-                user.addStore()
+                user.add()
                 completion(user: user)
             } else {
                 completion(user: nil)
@@ -27,43 +27,32 @@ class Service {
     
     
     class func getSongsByArtistId(id: Int,
-                                  store: ((store: [SongModel]) -> Void),
-                                  completion: ((songs: [SongModel]) -> Void)) {
+                                  store: ((data: [SongModel]) -> Void),
+                                  service: ((data: [SongModel]) -> Void)) {
         
-        // GET STORE
+        // Data Source
         let dataSource: APIDataSouce = DataSource.Song.findSongsByArtistId(id)
-        let _store = RealmStore.models(StoreModel.self).filter("identifier =='\(dataSource.identifier)'").first
-        var response = [SongModel]()
-        if let models = _store?.models {
-            for item in  models {
-                if let song = RealmStore.models(SongModel.self).filter("id == \(item.id)").first {
-                    response.append(song)
-                }
-            }
-        }
-        store(store: response)
         
-        // GET SERVICE
-        APIManager.request(dataSource) { (response) in
+        // Get data from store
+        StoreManager.local(SongModel.self, dataSource: dataSource) { (data) in
+            store(data: data)
+        }
+        
+        // GET data from service
+        StoreManager.service(SongModel.self, dataSource: dataSource) { (data) in
+            let store = StoreModel()
+            store.identifier = dataSource.identifier
             var songs = [SongModel]()
-            if let data = response.data as? [AnyObject] {
-                
-                let store = StoreModel()
-                store.identifier = dataSource.identifier
-                for (index, object) in data.enumerate() {
-                    let model = Model()
-                    let song = SongModel(value: object)
-                    // save song
-                    song.addStore()
-                    
-                    model.initData(song.id, SongModel.self, index: index)
-                    songs.append(song)
-                    store.models.append(model)
-                }
-                store.addStore()
+            
+            for (index, object) in data.enumerate() {
+                let song = SongModel(value: object)
+                song.add()
+                songs.append(song)
+                store.addNote(SongModel.self, object: song, index: index)
             }
-            completion(songs: songs)
+            store.add()
+            service(data: songs)
         }
     }
- 
+    
 }

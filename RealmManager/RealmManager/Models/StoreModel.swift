@@ -18,8 +18,14 @@ class StoreModel: Object {
         return "identifier"
     }
     
-    func addStore() {
+    func add() {
         RealmStore.add(self)
+    }
+    
+    func addNote<T: BaseModel>(type: T.Type, object: T, index: Int) {
+        let model = Model()
+        model.initData(object.id, SongModel.self, index: index)
+        self.models.append(model)
     }
 
 }
