@@ -2,8 +2,6 @@
 
 Note: 
 
-<img src="https://pbs.twimg.com/media/CyLjh_fVQAAxn2Y.jpg">
-
 https://blog.hyphe.me/realm-and-alamofire-in-a-effective-harmony/ 
 
 
