@@ -40,11 +40,9 @@ class Service {
         StoreManager.data(SongModel.self, dataSource: dataSource, local: { (data) in
             store(data: data)
             }) { (data) in
-                
-                
+
                 // Handle object response
                 // TODO: Need improve by 'ObjectMapper' to init Genneric Object
-                
                 let store = StoreModel()
                 store.identifier = dataSource.identifier
                 var songs = [SongModel]()

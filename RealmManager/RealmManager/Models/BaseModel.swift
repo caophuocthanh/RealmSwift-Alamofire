@@ -32,7 +32,7 @@ class BaseModel: Object {
         RealmStore.add(self)
     }
     
-    func changed<T: BaseModel>(model: T.Type, block: (_: T?, _: ObjectChanged) -> Void) ->
+    func changed<T: BaseModel>(type: T.Type, block: (_: T?, _: ObjectChanged) -> Void) ->
         NotificationToken {
             
             let data = RealmStore.models(T).filter("id == \(self.id)")
@@ -53,5 +53,12 @@ class BaseModel: Object {
                     block(nil, ObjectChanged.Error(error))
                 }
             })
+    }
+}
+
+extension BaseModel {
+    
+    class func object<T: Object where T: BaseModel>(type: T.Type, id: Int) -> T? {
+        return RealmStore.models(T).filter("id == \(id)").first
     }
 }

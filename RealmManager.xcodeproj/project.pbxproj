@@ -65,7 +65,7 @@
 		058342A11DC35F4600D7689E /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		059E6C711DD5FCB3001F5E3A /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		059E6C721DD5FCB3001F5E3A /* StoreModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreModel.swift; sourceTree = "<group>"; };
-		059E6C771DD5FEFF001F5E3A /* DataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
+		059E6C771DD5FEFF001F5E3A /* DataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataSource.swift; path = ../DataManager/DataSource.swift; sourceTree = "<group>"; };
 		059E6C791DD5FF12001F5E3A /* StoreManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreManager.swift; sourceTree = "<group>"; };
 		05DD0F421DE91B5100DA8FC0 /* APIUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIUtilities.swift; sourceTree = "<group>"; };
 		05DD0F461DE92AD000DA8FC0 /* BaseWaterfallCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseWaterfallCollectionViewLayout.swift; sourceTree = "<group>"; };
@@ -173,6 +173,7 @@
 		051E83DE1DE7EDEE0033F965 /* Service( Tạm) */ = {
 			isa = PBXGroup;
 			children = (
+				059E6C771DD5FEFF001F5E3A /* DataSource.swift */,
 				051E83DF1DE7EE100033F965 /* Service.swift */,
 			);
 			name = "Service( Tạm)";
@@ -195,7 +196,6 @@
 		059E6C761DD5FD4F001F5E3A /* DataManager */ = {
 			isa = PBXGroup;
 			children = (
-				059E6C771DD5FEFF001F5E3A /* DataSource.swift */,
 				059E6C791DD5FF12001F5E3A /* StoreManager.swift */,
 			);
 			path = DataManager;
