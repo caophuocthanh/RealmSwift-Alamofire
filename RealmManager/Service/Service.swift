@@ -22,7 +22,6 @@ class Service {
         }
     }
     
-    
     class func getSongsByArtistId(
         id: Int,
         store: ((data: [SongModel]) -> Void),

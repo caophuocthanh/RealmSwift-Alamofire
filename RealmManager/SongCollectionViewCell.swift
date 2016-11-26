@@ -12,9 +12,7 @@ class SongCollectionViewCell: BaseCollectionViewCell {
     
     
     var subscription: RealmStoreNotificationToken?
-    
-    
-    
+
     private var _titleLabel = UILabel()
     private var _favoricButton = UIButton()
     
@@ -38,7 +36,6 @@ class SongCollectionViewCell: BaseCollectionViewCell {
             switch changed {
             case .Update:
                 print("REACT UPDATE SONG:\(object?.id) :", object?.isFavorited )
-                
                 if song.isFavorited == false {
                     self._favoricButton.setTitle("LIKE", forState: .Normal)
                 } else {
