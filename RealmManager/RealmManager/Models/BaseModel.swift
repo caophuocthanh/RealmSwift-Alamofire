@@ -36,7 +36,7 @@ class BaseModel: Object {
     func map<T: BaseModel>(type: T.Type, value: AnyObject) -> T? {
         if let value: [String : AnyObject] = value as? [String : AnyObject] {
             
-            // FUCK
+            //TODO: FUCK
             
             let genneric = type.init()
             if genneric.isKindOfClass(SongModel) {
@@ -45,7 +45,7 @@ class BaseModel: Object {
                 return UserModel(value: value) as? T
             }
             
-            // FUCK
+            //TODO: FUCK
             return nil
         }
         return nil
