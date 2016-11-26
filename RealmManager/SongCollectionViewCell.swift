@@ -41,6 +41,9 @@ class SongCollectionViewCell: BaseCollectionViewCell {
                 } else {
                     self._favoricButton.setTitle("UNLIKE", forState: .Normal)
                 }
+                
+                self._titleLabel.text = song.title + " \nID: \(song.id)"
+                
                 break
             case .Initial:
                 print("REACT INITIAL SONG:\(object?.id) :", object?.isFavorited )

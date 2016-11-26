@@ -8,18 +8,21 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITextFieldDelegate {
     
     let _collectionView = SongCollectionView()
     let _textField = UITextField()
     let _buttonLike = UIButton()
     let _button = UIButton()
     
+    let _textFieldNew = UITextField()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.view.addSubview(_collectionView)
+        
         self._textField.backgroundColor = UIColor.orangeColor()
         self._textField.placeholder = "id song"
         self._textField.textAlignment = .Center
@@ -36,9 +39,17 @@ class ViewController: UIViewController {
         self._button.setTitle("PUSH", forState: .Normal)
         self.view.addSubview(_button)
         
-                self._button.addTarget(self, action: #selector(self.didTouchPushButton), forControlEvents: .TouchUpInside)
+        self._button.addTarget(self, action: #selector(self.didTouchPushButton), forControlEvents: .TouchUpInside)
         
         
+        
+        self._textFieldNew.backgroundColor = UIColor.orangeColor()
+        self._textFieldNew.placeholder = "name song change"
+        self._textFieldNew.textAlignment = .Center
+        self.view.addSubview(_textFieldNew)
+        self._textFieldNew.delegate = self
+        
+        self._textFieldNew.translatesAutoresizingMaskIntoConstraints = false
         self._collectionView.translatesAutoresizingMaskIntoConstraints = false
         self._textField.translatesAutoresizingMaskIntoConstraints = false
         self._buttonLike.translatesAutoresizingMaskIntoConstraints = false
@@ -47,7 +58,8 @@ class ViewController: UIViewController {
         let views = ["v1": self._collectionView,
                      "v2": self._textField,
                      "v3": self._buttonLike,
-                     "v4": self._button]
+                     "v4": self._button,
+                     "v5": self._textFieldNew]
         
         self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(
             "H:|-0-[v1]-0-|",
@@ -74,7 +86,13 @@ class ViewController: UIViewController {
             views: views))
         
         self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(
-            "V:|-0-[v1]-[v2(40)]-10-[v3(40)]-10-[v4]-20-|",
+            "H:|-[v5]-|",
+            options: [],
+            metrics: nil,
+            views: views))
+        
+        self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(
+            "V:|-0-[v1]-[v2(40)]-10-[v3(40)]-10-[v4]-10-[v5(40)]-20-|",
             options: [],
             metrics: nil,
             views: views))
@@ -82,6 +100,24 @@ class ViewController: UIViewController {
         
         // LOGIN
         self.login()
+    }
+    
+    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+        
+        if let id = self._textField.text {
+            let a = RealmStore.models(SongModel.self).filter("id == \(id)")
+            
+            if let c: SongModel = a.first {
+                try! RealmStore.write({
+                    c.title = self._textFieldNew.text
+                })
+                
+            } else {
+                print("NUL NUL")
+            }
+        }
+        
+        return true
     }
     
     func login() {
