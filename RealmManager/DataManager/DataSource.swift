@@ -19,9 +19,7 @@ class DataSource {
         dataSource.method = .POST
         dataSource.identifier = "LOGIN"
         return dataSource
-        
     }
-    
 }
 
 

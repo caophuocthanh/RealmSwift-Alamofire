@@ -126,25 +126,19 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     func login() {
-        print("-------------LOGIN-------------")
         Service.authenticate("1620640691594201") { (user) in
-            print("USER:", user.first)
-            self.getSongs()
+            if user.count > 0 {
+                self.getSongs()
+            }
         }
     }
     
     func getSongs() {
-        print("-------------GET SONGS BY ARTIST ID 561-------------")
-        
         Service.Songs.findByArtistId(561, store: { (store) in
-            print("----> LOAD CACHE DATABASE SONGS....:", store.count)
             self._collectionView.songs = store
         }) { (songs) in
-            print("----> LOAD SERVICE RESPONSE SONGS....:", songs.count)
             if songs.count > 0 {
                 self._collectionView.songs = songs
-            } else {
-                print("----> LOAD SERVICE RESPONSE SONGS NULL....")
             }
         }
         
@@ -158,14 +152,10 @@ class ViewController: UIViewController, UITextFieldDelegate {
     func didTouchLikeButton() {
         if let id = self._textField.text {
             let a = RealmStore.models(SongModel.self).filter("id == \(id)")
-            
             if let c: SongModel = a.first {
                 try! RealmStore.write({
                     c.isFavorited = !c.isFavorited
                 })
-                
-            } else {
-                print("NUL NUL")
             }
         }
     }

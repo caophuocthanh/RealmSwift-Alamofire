@@ -77,14 +77,13 @@ class APIManager {
     static let networking = Networking()
     
     class func request(dataSource: APIDataSouce, completion: ((data: APIResponseData) -> Void))  -> NSURLSessionTask? {
-        print("request: ", dataSource.identifier)
+        print("Service get pool request identifier: ", dataSource.identifier)
         let method: APIMethod = dataSource.method
         switch method {
         case .POST:
             return APIManager.networking.POST(dataSource.apiURL, parameters: dataSource.parameters) { (responseObject) in
                 switch responseObject {
                 case .Success(let response):
-                    print("POST SUCCESS:", dataSource.identifier)
                     completion(data: APIResponseData(response, method: .POST, identifier: dataSource.identifier))
                     break
                 default:
@@ -97,7 +96,6 @@ class APIManager {
             return APIManager.networking.GET(dataSource.apiURL, parameters: dataSource.parameters) { (responseObject) in
                 switch responseObject {
                 case .Success(let response):
-                    print("GET SUCCESS:", dataSource.identifier)
                     completion(data: APIResponseData(response, method: .GET, identifier: dataSource.identifier))
                     break
                 default:

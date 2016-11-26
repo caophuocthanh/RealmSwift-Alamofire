@@ -19,7 +19,7 @@ public enum ObjectChanged {
     case Error(NSError)
 }
 
-/// BaseModel
+
 class BaseModel: Object, Mappable {
     
     dynamic var id = 0

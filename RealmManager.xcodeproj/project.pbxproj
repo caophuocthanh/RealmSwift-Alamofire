@@ -131,7 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				05DD0F451DE92A7B00DA8FC0 /* Base */,
-				051E83DE1DE7EDEE0033F965 /* Service( Tạm) */,
+				051E83DE1DE7EDEE0033F965 /* Service */,
 				059E6C761DD5FD4F001F5E3A /* DataManager */,
 				058342A51DC366A100D7689E /* Models */,
 				050842A91DB20423000D29E9 /* RealmManager */,
@@ -170,13 +170,12 @@
 			path = RealmManager;
 			sourceTree = "<group>";
 		};
-		051E83DE1DE7EDEE0033F965 /* Service( Tạm) */ = {
+		051E83DE1DE7EDEE0033F965 /* Service */ = {
 			isa = PBXGroup;
 			children = (
 				059E6C771DD5FEFF001F5E3A /* DataSource.swift */,
 				051E83DF1DE7EE100033F965 /* Service.swift */,
 			);
-			name = "Service( Tạm)";
 			path = Service;
 			sourceTree = "<group>";
 		};

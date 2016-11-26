@@ -35,7 +35,6 @@ class SongCollectionViewCell: BaseCollectionViewCell {
         self.subscription = song.changed(SongModel.self, block: { (object, changed) in
             switch changed {
             case .Update:
-                print("REACT UPDATE SONG:\(object?.id) :", object?.isFavorited )
                 if song.isFavorited == false {
                     self._favoricButton.setTitle("LIKE", forState: .Normal)
                 } else {
@@ -46,10 +45,8 @@ class SongCollectionViewCell: BaseCollectionViewCell {
                 
                 break
             case .Initial:
-                print("REACT INITIAL SONG:\(object?.id) :", object?.isFavorited )
                 break
             case .Delete:
-                print("REACT DELETE SONG: \(object?.id)")
                 break
             case .Error(_):
                 break

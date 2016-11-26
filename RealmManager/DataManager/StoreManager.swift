@@ -15,7 +15,6 @@ class StoreManager {
         type: T.Type,
         dataSource: APIDataSouce,
         complete: ((data: [T]?) -> Void)) {
-
         let _store = RealmStore.models(StoreModel.self).filter("identifier =='\(dataSource.identifier)'").first
         if let models = _store?.models {
             var response = [T]()
@@ -35,7 +34,6 @@ class StoreManager {
         type: T.Type,
         dataSource: APIDataSouce,
         complete: ((data: [T]?) -> Void)) {
-        
         APIManager.request(dataSource) { (data) in
             if let data = data.data as? [AnyObject] {
                 let store = StoreModel()
@@ -76,7 +74,6 @@ class StoreManager {
         dataSource: APIDataSouce,
         local: ((data: [T]?) -> Void),
         service: ((data: [T]?) -> Void)) {
-        
         StoreManager.local(type, dataSource: dataSource) { (data) in
             local(data: data)
         }

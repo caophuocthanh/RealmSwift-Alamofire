@@ -70,7 +70,6 @@ class Networking {
     func GET(url: String, parameters: [String: AnyObject]? , completion: ((responseObject: Result<AnyObject>) -> Void)) -> NSURLSessionTask? {
         self.request = Alamofire.request(.GET, url, parameters: parameters, encoding: .JSON, headers: self.headers).responseJSON(completionHandler: { (response) in
             if response.result.isSuccess {
-                print("GET Success Request: ", self.request?.request?.URLString)
                 completion(responseObject: Result.Success(response.result.value))
             } else {
                 print("GET Faild Request: ", self.request?.request?.URLString)

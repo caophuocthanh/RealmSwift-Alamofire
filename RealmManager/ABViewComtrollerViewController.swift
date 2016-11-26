@@ -80,24 +80,17 @@ class ABViewComtrollerViewController: UIViewController {
             metrics: nil,
             views: views))
         
-        
-        // LOGIN
+
         self.getSongs()
     }
 
     
     func getSongs() {
-        print("-------------GET SONGS BY ARTIST ID 561-------------")
-        
         Service.Songs.findByArtistId(561, store: { (store) in
-            print("----> LOAD CACHE DATABASE SONGS....:", store.count)
             self._collectionView.songs = store
         }) { (songs) in
-            print("----> LOAD SERVICE RESPONSE SONGS....:", songs.count)
             if songs.count > 0 {
                 self._collectionView.songs = songs
-            } else {
-                print("----> LOAD SERVICE RESPONSE SONGS NULL....")
             }
         }
     }
@@ -114,9 +107,6 @@ class ABViewComtrollerViewController: UIViewController {
                 try! RealmStore.write({
                     c.isFavorited = !c.isFavorited
                 })
-                
-            } else {
-                print("NUL NUL")
             }
         }
     }

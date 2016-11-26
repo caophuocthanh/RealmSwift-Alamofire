@@ -15,7 +15,6 @@ class Service {
         completion: ((user: [UserModel]) -> Void)) {
         // Data Source
         let dataSource: APIDataSouce = DataSource.authenticate(facebookId)
-        
         // Get data
         StoreManager.service(UserModel.self, dataSource: dataSource) { (data) in
             completion(user: data ?? [])
@@ -28,10 +27,8 @@ class Service {
             id: Int,
             store: ((data: [SongModel]) -> Void),
             service: ((data: [SongModel]) -> Void)) {
-            
             // Data Source
             let dataSource: APIDataSouce = DataSource.Songs.findByArtistId(id)
-            
             // Get data
             StoreManager.data(SongModel.self, dataSource: dataSource, local: { (data) in
                 store(data: data ?? [])
