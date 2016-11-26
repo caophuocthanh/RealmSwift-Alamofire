@@ -27,7 +27,7 @@ class SongCollectionView: BaseCollectionView {
         
         self.registerCell(SongCollectionViewCell)
         
-        self.layout.minimumColumnSpacing = 4
+        self.layout.minimumColumnSpacing = 8
         self.layout.minimumInteritemSpacing = 8
         
     }

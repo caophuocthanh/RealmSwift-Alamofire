@@ -26,6 +26,7 @@
 		05DD0F4B1DE92B4C00DA8FC0 /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05DD0F4A1DE92B4C00DA8FC0 /* BaseCollectionViewCell.swift */; };
 		05DD0F4D1DE92BD300DA8FC0 /* SongCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05DD0F4C1DE92BD300DA8FC0 /* SongCollectionView.swift */; };
 		05DD0F4F1DE92CF300DA8FC0 /* SongCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05DD0F4E1DE92CF300DA8FC0 /* SongCollectionViewCell.swift */; };
+		05DD0F511DE940BC00DA8FC0 /* ABViewComtrollerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05DD0F501DE940BC00DA8FC0 /* ABViewComtrollerViewController.swift */; };
 		05F7F4801DD5BEF700D30B62 /* ArtistModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F7F47A1DD5BEF700D30B62 /* ArtistModel.swift */; };
 		05F7F4811DD5BEF700D30B62 /* CoverModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F7F47B1DD5BEF700D30B62 /* CoverModel.swift */; };
 		05F7F4821DD5BEF700D30B62 /* FileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F7F47C1DD5BEF700D30B62 /* FileModel.swift */; };
@@ -72,6 +73,7 @@
 		05DD0F4A1DE92B4C00DA8FC0 /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
 		05DD0F4C1DE92BD300DA8FC0 /* SongCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongCollectionView.swift; sourceTree = "<group>"; };
 		05DD0F4E1DE92CF300DA8FC0 /* SongCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongCollectionViewCell.swift; sourceTree = "<group>"; };
+		05DD0F501DE940BC00DA8FC0 /* ABViewComtrollerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ABViewComtrollerViewController.swift; sourceTree = "<group>"; };
 		05F7F47A1DD5BEF700D30B62 /* ArtistModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArtistModel.swift; sourceTree = "<group>"; };
 		05F7F47B1DD5BEF700D30B62 /* CoverModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoverModel.swift; sourceTree = "<group>"; };
 		05F7F47C1DD5BEF700D30B62 /* FileModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileModel.swift; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 				050842951DB20411000D29E9 /* Info.plist */,
 				05DD0F4C1DE92BD300DA8FC0 /* SongCollectionView.swift */,
 				05DD0F4E1DE92CF300DA8FC0 /* SongCollectionViewCell.swift */,
+				05DD0F501DE940BC00DA8FC0 /* ABViewComtrollerViewController.swift */,
 			);
 			path = RealmManager;
 			sourceTree = "<group>";
@@ -418,6 +421,7 @@
 				05DD0F471DE92AD000DA8FC0 /* BaseWaterfallCollectionViewLayout.swift in Sources */,
 				0508428C1DB20410000D29E9 /* ViewController.swift in Sources */,
 				05DD0F431DE91B5100DA8FC0 /* APIUtilities.swift in Sources */,
+				05DD0F511DE940BC00DA8FC0 /* ABViewComtrollerViewController.swift in Sources */,
 				051E83E01DE7EE100033F965 /* Service.swift in Sources */,
 				0508428A1DB20410000D29E9 /* AppDelegate.swift in Sources */,
 				059E6C781DD5FEFF001F5E3A /* DataSource.swift in Sources */,

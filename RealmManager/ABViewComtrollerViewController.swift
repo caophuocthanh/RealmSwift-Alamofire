@@ -1,15 +1,15 @@
 //
-//  ViewController.swift
+//  ABViewComtrollerViewController.swift
 //  RealmManager
 //
-//  Created by Cao Phuoc Thanh on 10/15/16.
+//  Created by Cao Phuoc Thanh on 11/26/16.
 //  Copyright © 2016 Cao Phuoc Thanh. All rights reserved.
 //
 
 import UIKit
 
-class ViewController: UIViewController {
-    
+class ABViewComtrollerViewController: UIViewController {
+
     let _collectionView = SongCollectionView()
     let _textField = UITextField()
     let _buttonLike = UIButton()
@@ -19,6 +19,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.view.backgroundColor = UIColor.whiteColor()
         self.view.addSubview(_collectionView)
         self._textField.backgroundColor = UIColor.orangeColor()
         self._textField.placeholder = "id song"
@@ -33,10 +34,10 @@ class ViewController: UIViewController {
         self._buttonLike.addTarget(self, action: #selector(self.didTouchLikeButton), forControlEvents: .TouchUpInside)
         
         self._button.backgroundColor = UIColor.redColor()
-        self._button.setTitle("PUSH", forState: .Normal)
+        self._button.setTitle("DISSMIS", forState: .Normal)
         self.view.addSubview(_button)
         
-                self._button.addTarget(self, action: #selector(self.didTouchPushButton), forControlEvents: .TouchUpInside)
+        self._button.addTarget(self, action: #selector(self.didTouchPushButton), forControlEvents: .TouchUpInside)
         
         
         self._collectionView.translatesAutoresizingMaskIntoConstraints = false
@@ -112,9 +113,7 @@ class ViewController: UIViewController {
     }
     
     func didTouchPushButton() {
-        let vc = ABViewComtrollerViewController()
-        let a = UINavigationController(rootViewController: vc)
-        self.showViewController(a, sender: self)
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     func didTouchLikeButton() {
@@ -136,7 +135,5 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         print("didReceiveMemoryWarning")
     }
-    
-    
-}
 
+}
