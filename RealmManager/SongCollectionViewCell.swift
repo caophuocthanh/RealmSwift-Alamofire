@@ -24,9 +24,9 @@ class SongCollectionViewCell: BaseCollectionViewCell {
             if let _song = self.song {
                 self._titleLabel.text = _song.title + " \nID: \(_song.id)"
                 if _song.isFavorited == false {
-                    self._favoricButton.setTitle("LIKE ID", forState: .Normal)
+                    self._favoricButton.setTitle("LIKE", forState: .Normal)
                 } else {
-                    self._favoricButton.setTitle("UN LIKE", forState: .Normal)
+                    self._favoricButton.setTitle("UNLIKE", forState: .Normal)
                 }
                 self.registerEventChangeObjectInCell(_song)
             }
@@ -42,13 +42,15 @@ class SongCollectionViewCell: BaseCollectionViewCell {
                 if song.isFavorited == false {
                     self._favoricButton.setTitle("LIKE", forState: .Normal)
                 } else {
-                    self._favoricButton.setTitle("UN LIKE", forState: .Normal)
+                    self._favoricButton.setTitle("UNLIKE", forState: .Normal)
                 }
                 
                 break
             case .Initial:
+                print("REACT INITIAL SONG:\(object?.id) :", object?.isFavorited )
                 break
             case .Delete:
+                print("REACT DELETE SONG: \(object?.id)")
                 break
             case .Error(_):
                 break

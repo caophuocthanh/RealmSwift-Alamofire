@@ -18,6 +18,7 @@ class StoreManager {
         
         let _store = RealmStore.models(StoreModel.self).filter("identifier =='\(dataSource.identifier)'").first
         var response = [T]()
+
         if let models = _store?.models {
             for item in  models {
                 if let model: Results<T> = RealmStore.models(T.self).filter("id == \(item.id)") {

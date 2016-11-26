@@ -54,10 +54,4 @@ class BaseModel: Object {
                 }
             })
     }
-    
-    
-    class func get<T: BaseModel>(type: T.Type, id: Int) -> Results<T> {
-        return RealmStore.models(type).filter("id == \(id)")
-    }
-    
 }

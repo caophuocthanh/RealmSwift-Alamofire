@@ -111,8 +111,7 @@ class ViewController: UIViewController {
     
     func didTouchPushButton() {
         let vc = ABViewComtrollerViewController()
-        let a = UINavigationController(rootViewController: vc)
-        self.showViewController(a, sender: self)
+        self.showViewController(vc, sender: self)
     }
     
     func didTouchLikeButton() {
