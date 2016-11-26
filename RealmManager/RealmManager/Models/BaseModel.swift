@@ -9,6 +9,8 @@
 import UIKit
 import RealmSwift
 import Realm
+import ObjectMapper
+
 
 public enum ObjectChanged {
     case Initial
@@ -18,7 +20,7 @@ public enum ObjectChanged {
 }
 
 /// BaseModel
-class BaseModel: Object {
+class BaseModel: Object, Mappable {
     
     dynamic var id = 0
     dynamic var created_at  : String?
@@ -28,25 +30,24 @@ class BaseModel: Object {
         return "id"
     }
     
+    required init() { super.init() }
+    required init?(_ map: Map) { super.init() }
+    required init(value: AnyObject, schema: RLMSchema) { super.init(value: value, schema: schema) }
+    required init(realm: RLMRealm, schema: RLMObjectSchema) { super.init(realm: realm, schema: schema) }
+    
+    func mapping(map: Map) {
+        id <- map["id"]
+        created_at <- map["created_at"]
+        updated_at <- map["updated_at"]
+    }
+    
     func add() {
-        print("ADD OBJECT:", self)
         RealmStore.add(self)
     }
     
     func map<T: BaseModel>(type: T.Type, value: AnyObject) -> T? {
         if let value: [String : AnyObject] = value as? [String : AnyObject] {
-            
-            //TODO: FUCK
-            
-            let genneric = type.init()
-            if genneric.isKindOfClass(SongModel) {
-                return SongModel(value: value) as? T
-            } else if genneric.isKindOfClass(UserModel) {
-                return UserModel(value: value) as? T
-            }
-            
-            //TODO: FUCK
-            return nil
+            return Mapper<T>().map(value)
         }
         return nil
     }

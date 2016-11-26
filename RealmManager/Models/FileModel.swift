@@ -8,10 +8,18 @@
 
 import Foundation
 import RealmSwift
+import ObjectMapper
 
 class FileModel: BaseModel {
     
     dynamic var tone_color: String? = nil
     dynamic var url: String? = nil
+    
+    override func mapping(map: Map) {
+        super.mapping(map)
+        
+        tone_color <- map["tone_color"]
+        url <- map["url"]
+    }
     
 }
