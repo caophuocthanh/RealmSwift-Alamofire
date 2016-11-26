@@ -11,9 +11,10 @@ import RealmSwift
 
 class StoreManager {
     
-    class func local<T: Object where T: BaseModel >(type: T.Type,
-                     dataSource: APIDataSouce,
-                     complete: ((data: [T]) -> Void)) {
+    class func local<T: Object where T: BaseModel >(
+        type: T.Type,
+        dataSource: APIDataSouce,
+        complete: ((data: [T]) -> Void)) {
         
         let _store = RealmStore.models(StoreModel.self).filter("identifier =='\(dataSource.identifier)'").first
         var response = [T]()
@@ -28,9 +29,11 @@ class StoreManager {
         complete(data: response)
     }
     
-    class func service<T: Object where T: BaseModel >(type: T.Type,
-                       dataSource: APIDataSouce,
-                       complete: ((data: [AnyObject]) -> Void)) {
+    class func service<T: Object where T: BaseModel >(
+        type: T.Type,
+        dataSource: APIDataSouce,
+        complete: ((data: [AnyObject]) -> Void)) {
+        
         APIManager.request(dataSource) { (data) in
             if let data = data.data as? [AnyObject] {
                 complete(data: data)
@@ -41,4 +44,19 @@ class StoreManager {
             }
         }
     }
+    
+    class func data<T: Object where T: BaseModel >(
+        type: T.Type,
+        dataSource: APIDataSouce,
+        local: ((data: [T]) -> Void),
+        service: ((data: [AnyObject]) -> Void)) {
+        
+        StoreManager.local(type, dataSource: dataSource) { (data) in
+            local(data: data)
+        }
+        StoreManager.service(type, dataSource: dataSource) { (data) in
+            service(data: data)
+        }
+    }
+    
 }
