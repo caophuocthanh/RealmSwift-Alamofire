@@ -18,6 +18,11 @@ class ViewController: UIViewController, UITextFieldDelegate {
     let _textFieldNew = UITextField()
     
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self._collectionView.reloadData()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -109,7 +114,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
             
             if let c: SongModel = a.first {
                 try! RealmStore.write({
-                    c.title = self._textFieldNew.text
+                    c.title = self._textFieldNew.text ?? "" + string
                 })
                 
             } else {
