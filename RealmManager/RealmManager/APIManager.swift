@@ -40,7 +40,6 @@ class APIResponseData {
     var nextURL: String?
     var navigation: APINavigation?
     
-    
     init(_ respone: AnyObject?, method: APIMethod, identifier: String!) {
         self.identifier = identifier
         if let _dataResponse = respone {

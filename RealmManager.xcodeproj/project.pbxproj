@@ -130,20 +130,17 @@
 		050842881DB20410000D29E9 /* RealmManager */ = {
 			isa = PBXGroup;
 			children = (
+				05F4ECDB1DEBBF8F00A554E8 /* Views */,
+				05F4ECDA1DEBBF7F00A554E8 /* ViewControllers */,
 				05DD0F451DE92A7B00DA8FC0 /* Base */,
 				051E83DE1DE7EDEE0033F965 /* Service */,
-				059E6C761DD5FD4F001F5E3A /* DataManager */,
 				058342A51DC366A100D7689E /* Models */,
 				050842A91DB20423000D29E9 /* RealmManager */,
 				050842891DB20410000D29E9 /* AppDelegate.swift */,
-				0508428B1DB20410000D29E9 /* ViewController.swift */,
 				0508428D1DB20410000D29E9 /* Main.storyboard */,
 				050842901DB20410000D29E9 /* Assets.xcassets */,
 				050842921DB20410000D29E9 /* LaunchScreen.storyboard */,
 				050842951DB20411000D29E9 /* Info.plist */,
-				05DD0F4C1DE92BD300DA8FC0 /* SongCollectionView.swift */,
-				05DD0F4E1DE92CF300DA8FC0 /* SongCollectionViewCell.swift */,
-				05DD0F501DE940BC00DA8FC0 /* ABViewComtrollerViewController.swift */,
 			);
 			path = RealmManager;
 			sourceTree = "<group>";
@@ -160,6 +157,7 @@
 		050842A91DB20423000D29E9 /* RealmManager */ = {
 			isa = PBXGroup;
 			children = (
+				059E6C761DD5FD4F001F5E3A /* DataManager */,
 				05DD0F411DE91B1E00DA8FC0 /* Utilities */,
 				05F7F4861DD5BF4700D30B62 /* Models */,
 				05F7F4881DD5BF4700D30B62 /* Networking */,
@@ -197,7 +195,8 @@
 			children = (
 				059E6C791DD5FF12001F5E3A /* StoreManager.swift */,
 			);
-			path = DataManager;
+			name = DataManager;
+			path = ../DataManager;
 			sourceTree = "<group>";
 		};
 		05DD0F411DE91B1E00DA8FC0 /* Utilities */ = {
@@ -216,6 +215,24 @@
 				05DD0F4A1DE92B4C00DA8FC0 /* BaseCollectionViewCell.swift */,
 			);
 			path = Base;
+			sourceTree = "<group>";
+		};
+		05F4ECDA1DEBBF7F00A554E8 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				0508428B1DB20410000D29E9 /* ViewController.swift */,
+				05DD0F501DE940BC00DA8FC0 /* ABViewComtrollerViewController.swift */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		05F4ECDB1DEBBF8F00A554E8 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				05DD0F4C1DE92BD300DA8FC0 /* SongCollectionView.swift */,
+				05DD0F4E1DE92CF300DA8FC0 /* SongCollectionViewCell.swift */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 		05F7F4861DD5BF4700D30B62 /* Models */ = {
