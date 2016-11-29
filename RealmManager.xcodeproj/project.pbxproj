@@ -62,7 +62,7 @@
 		050842A01DB20411000D29E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		051E83DF1DE7EE100033F965 /* Service.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		0583429F1DC35F1500D7689E /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
-		058342A11DC35F4600D7689E /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
+		058342A11DC35F4600D7689E /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Configuration.swift; path = ../RealmManager/Configuration.swift; sourceTree = "<group>"; };
 		059E6C711DD5FCB3001F5E3A /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		059E6C721DD5FCB3001F5E3A /* StoreModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreModel.swift; sourceTree = "<group>"; };
 		059E6C771DD5FEFF001F5E3A /* DataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataSource.swift; path = ../DataManager/DataSource.swift; sourceTree = "<group>"; };
@@ -163,7 +163,6 @@
 				05F7F4881DD5BF4700D30B62 /* Networking */,
 				05F7F48A1DD5BF4700D30B62 /* Realm */,
 				0583429F1DC35F1500D7689E /* APIManager.swift */,
-				058342A11DC35F4600D7689E /* Configuration.swift */,
 			);
 			path = RealmManager;
 			sourceTree = "<group>";
@@ -171,6 +170,7 @@
 		051E83DE1DE7EDEE0033F965 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				058342A11DC35F4600D7689E /* Configuration.swift */,
 				059E6C771DD5FEFF001F5E3A /* DataSource.swift */,
 				051E83DF1DE7EE100033F965 /* Service.swift */,
 			);
