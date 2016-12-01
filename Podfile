@@ -11,6 +11,8 @@ pod 'RealmSwift'
 
 pod 'Alamofire', '3.5.0'
 
+pod 'ObjectMapper', '1.1.5'
+
 end
 
 target 'RealmManager' do
