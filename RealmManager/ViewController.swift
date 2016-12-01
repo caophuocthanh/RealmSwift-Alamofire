@@ -127,6 +127,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     func login() {
         Service.authenticate("1620640691594201") { (user) in
+            print("User:", user)
             if user.count > 0 {
                 self.getSongs()
             }
