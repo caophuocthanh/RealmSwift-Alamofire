@@ -10,7 +10,7 @@ import UIKit
 
 class SongCollectionViewCell: BaseCollectionViewCell {
     
-    var subscription: RealmStoreNotificationToken?
+    var subscription: ZRealmStoreNotificationToken?
     
     private var _titleLabel = UILabel()
     private var _favoricButton = UIButton()
@@ -81,9 +81,9 @@ class SongCollectionViewCell: BaseCollectionViewCell {
     
     func didTouchLikeButton() {
         if let song = self.song {
-            let a = RealmStore.models(SongModel.self).filter("id == \(song.id)")
+            let a = ZRealmStore.models(SongModel.self).filter("id == \(song.id)")
             if let c: SongModel = a.first {
-                try! RealmStore.write({
+                try! ZRealmStore.write({
                     c.isFavorited = !c.isFavorited
                 })
             }
@@ -127,7 +127,7 @@ class SongCollectionViewCell: BaseCollectionViewCell {
     }
     
     
-    override class func getCellSize(model: BaseModel) -> CGSize {
+    override class func getCellSize(model: ZModel) -> CGSize {
         let height = (model as? SongModel)?.lyric_preview?.heightForWithFont(UIFont.systemFontOfSize(16), width: UIScreen.mainScreen().bounds.width/2 - 32, insets: UIEdgeInsets(top: 4, left: 4, bottom: 4, right: 4)) ?? 0
         return CGSizeMake(UIScreen.mainScreen().bounds.width, 30 + 4 + 4 + height + 200)
     }

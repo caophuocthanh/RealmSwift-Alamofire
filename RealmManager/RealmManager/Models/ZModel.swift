@@ -1,5 +1,5 @@
 //
-//  BaseModel.swift
+//  ZModel.swift
 //  RealmManager
 //
 //  Created by Cao Phuoc Thanh on 10/15/16.
@@ -20,7 +20,7 @@ public enum ObjectChanged {
 }
 
 
-class BaseModel: Object, Mappable {
+class ZModel: Object, Mappable {
     
     dynamic var id = 0
     dynamic var created_at  : String?
@@ -42,20 +42,20 @@ class BaseModel: Object, Mappable {
     }
     
     func add() {
-        RealmStore.add(self)
+        ZRealmStore.add(self)
     }
     
-    func map<T: BaseModel>(type: T.Type, value: AnyObject) -> T? {
+    func map<T: ZModel>(type: T.Type, value: AnyObject) -> T? {
         if let value: [String : AnyObject] = value as? [String : AnyObject] {
             return Mapper<T>().map(value)
         }
         return nil
     }
     
-    func changed<T: BaseModel>(type: T.Type, block: (_: T?, _: ObjectChanged) -> Void) ->
+    func changed<T: ZModel>(type: T.Type, block: (_: T?, _: ObjectChanged) -> Void) ->
         NotificationToken {
             
-            let data = RealmStore.models(T).filter("id == \(self.id)")
+            let data = ZRealmStore.models(T).filter("id == \(self.id)")
             return data._addNotificationBlock({ (changes) in
                 switch changes {
                 case .Initial(let result):
@@ -76,9 +76,9 @@ class BaseModel: Object, Mappable {
     }
 }
 
-extension BaseModel {
+extension ZModel {
     
-    class func object<T: Object where T: BaseModel>(type: T.Type, id: Int) -> T? {
-        return RealmStore.models(T).filter("id == \(id)").first
+    class func object<T: Object where T: ZModel>(type: T.Type, id: Int) -> T? {
+        return ZRealmStore.models(T).filter("id == \(id)").first
     }
 }

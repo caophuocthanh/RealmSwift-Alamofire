@@ -1,5 +1,5 @@
 //
-//  Networking.swift
+//  ZNetworking.swift
 //  RealmManager
 //
 //  Created by Cao Phuoc Thanh on 11/1/16.
@@ -24,7 +24,7 @@ public enum Result<T: AnyObject> {
     case NotFound(T?)
 }
 
-class Networking {
+class ZNetworking {
     
     var request: Alamofire.Request?
     

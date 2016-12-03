@@ -16,7 +16,7 @@ class Service {
         // Data Source
         let dataSource: APIDataSouce = DataSource.authenticate(facebookId)
         // Get data
-        StoreManager.service(UserModel.self, dataSource: dataSource) { (data) in
+        ZStoreManager.service(UserModel.self, dataSource: dataSource) { (data) in
             completion(user: data ?? [])
         }
     }
@@ -30,7 +30,7 @@ class Service {
             // Data Source
             let dataSource: APIDataSouce = DataSource.Songs.findByArtistId(id)
             // Get data
-            StoreManager.data(SongModel.self, dataSource: dataSource, local: { (data) in
+            ZStoreManager.data(SongModel.self, dataSource: dataSource, local: { (data) in
                 store(data: data ?? [])
             }) { (data) in
                 service(data: data ?? [])

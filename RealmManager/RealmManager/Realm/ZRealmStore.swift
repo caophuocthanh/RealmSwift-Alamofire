@@ -1,6 +1,6 @@
 //
-//  RealmStore.swift
-//  RealmStore
+//  ZRealmStore.swift
+//  ZRealmStore
 //
 //  Created by Cao Phuoc Thanh on 10/15/16.
 //  Copyright © 2016 Cao Phuoc Thanh. All rights reserved.
@@ -9,21 +9,21 @@
 import UIKit
 import RealmSwift
 
-public typealias RealmStoreNotificationToken = NotificationToken
+public typealias ZRealmStoreNotificationToken = NotificationToken
 
-class RealmStore {
+class ZRealmStore {
     
     /// new realm
     static let store = try! Realm()
     
     /**
-     Add object(BaseModel) to store
+     Add object(ZModel) to store
      
-     - parameter model: object (BaseModel)
+     - parameter model: object (ZModel)
      */
     static func add(model: Object) {
-        try! RealmStore.write {
-            RealmStore.store.add(model, update: true)
+        try! ZRealmStore.write {
+            ZRealmStore.store.add(model, update: true)
         }
     }
     
@@ -32,10 +32,10 @@ class RealmStore {
      
      - parameter type: Object Type
      
-     - returns: List Model Result (BaseModel)
+     - returns: List Model Result (ZModel)
      */
     static func models<T: Object>(type: T.Type) -> Results<T> {
-        return  RealmStore.store.objects(T)
+        return  ZRealmStore.store.objects(T)
     }
     
     /**
@@ -44,10 +44,10 @@ class RealmStore {
      - parameter type: Object type
      - parameter id:   id (primary key)
      
-     - returns: Object (BaseModel)
+     - returns: Object (ZModel)
      */
     static func model<T: Object>(type: T.Type, id: Int) -> T? {
-        if let model:T = RealmStore.store.objects(T).filter("id == \(id)").sorted("created_at", ascending: false).first {
+        if let model:T = ZRealmStore.store.objects(T).filter("id == \(id)").sorted("created_at", ascending: false).first {
             return  model
         }
         return nil
@@ -61,19 +61,19 @@ class RealmStore {
      - throws:
      */
     static func write(@noescape block: (() throws -> Void)) throws {
-        RealmStore.store.beginWrite()
+        ZRealmStore.store.beginWrite()
         try block()
-        try! RealmStore.store.commitWrite()
+        try! ZRealmStore.store.commitWrite()
     }
     
     /**
-     Delete object (BaseModel)
+     Delete object (ZModel)
      
-     - parameter model: object (BaseModel)
+     - parameter model: object (ZModel)
      */
-    static func delete(model: BaseModel) {
-        try! RealmStore.write {
-            RealmStore.store.delete(model)
+    static func delete(model: ZModel) {
+        try! ZRealmStore.write {
+            ZRealmStore.store.delete(model)
         }
     }
     

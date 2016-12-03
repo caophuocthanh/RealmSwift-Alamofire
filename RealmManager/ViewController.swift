@@ -110,10 +110,10 @@ class ViewController: UIViewController, UITextFieldDelegate {
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
         
         if let id = self._textField.text {
-            let a = RealmStore.models(SongModel.self).filter("id == \(id)")
+            let a = ZRealmStore.models(SongModel.self).filter("id == \(id)")
             
             if let c: SongModel = a.first {
-                try! RealmStore.write({
+                try! ZRealmStore.write({
                     c.title = self._textFieldNew.text ?? "" + string
                 })
                 
@@ -152,9 +152,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     func didTouchLikeButton() {
         if let id = self._textField.text {
-            let a = RealmStore.models(SongModel.self).filter("id == \(id)")
+            let a = ZRealmStore.models(SongModel.self).filter("id == \(id)")
             if let c: SongModel = a.first {
-                try! RealmStore.write({
+                try! ZRealmStore.write({
                     c.isFavorited = !c.isFavorited
                 })
             }

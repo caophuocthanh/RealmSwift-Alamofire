@@ -10,7 +10,7 @@ import Foundation
 import RealmSwift
 import ObjectMapper
 
-class SongModel: BaseModel {
+class SongModel: ZModel {
     dynamic var genre: String?
     dynamic var isFavorited: Bool = false
     dynamic var karaoke_number: String?

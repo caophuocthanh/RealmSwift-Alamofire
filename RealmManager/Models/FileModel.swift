@@ -10,7 +10,7 @@ import Foundation
 import RealmSwift
 import ObjectMapper
 
-class FileModel: BaseModel {
+class FileModel: ZModel {
     
     dynamic var tone_color: String? = nil
     dynamic var url: String? = nil

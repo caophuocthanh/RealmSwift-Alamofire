@@ -1,5 +1,5 @@
 //
-//  APIManager.swift
+//  ZServiceManager.swift
 //  RealmManager
 //
 //  Created by Cao Phuoc Thanh on 10/28/16.
@@ -71,16 +71,16 @@ class APIResponseData {
     }
 }
 
-class APIManager {
+class ZServiceManager {
     
-    static let networking = Networking()
+    static let networking = ZNetworking()
     
     class func request(dataSource: APIDataSouce, completion: ((data: APIResponseData) -> Void))  -> NSURLSessionTask? {
         print("Service get pool request identifier: ", dataSource.identifier)
         let method: APIMethod = dataSource.method
         switch method {
         case .POST:
-            return APIManager.networking.POST(dataSource.apiURL, parameters: dataSource.parameters) { (responseObject) in
+            return ZServiceManager.networking.POST(dataSource.apiURL, parameters: dataSource.parameters) { (responseObject) in
                 switch responseObject {
                 case .Success(let response):
                     completion(data: APIResponseData(response, method: .POST, identifier: dataSource.identifier))
@@ -92,7 +92,7 @@ class APIManager {
                 }
             }
         case .GET:
-            return APIManager.networking.GET(dataSource.apiURL, parameters: dataSource.parameters) { (responseObject) in
+            return ZServiceManager.networking.GET(dataSource.apiURL, parameters: dataSource.parameters) { (responseObject) in
                 switch responseObject {
                 case .Success(let response):
                     completion(data: APIResponseData(response, method: .GET, identifier: dataSource.identifier))

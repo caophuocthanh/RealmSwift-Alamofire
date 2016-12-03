@@ -9,7 +9,7 @@
 import Foundation
 import RealmSwift
 
-class CoverModel: BaseModel {
+class CoverModel: ZModel {
     
     dynamic var artist_id   : Int = 0
     dynamic var cover       : FileModel?

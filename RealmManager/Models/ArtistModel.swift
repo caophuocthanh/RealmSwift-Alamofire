@@ -9,7 +9,7 @@
 import Foundation
 import RealmSwift
 
-class ArtistModel: BaseModel {
+class ArtistModel: ZModel {
     dynamic var name: String = ""
     dynamic var search_count: Int = 0
     var covers = List<CoverModel>()

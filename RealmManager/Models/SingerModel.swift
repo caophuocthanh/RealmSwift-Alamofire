@@ -10,7 +10,7 @@ import Foundation
 import RealmSwift
 import ObjectMapper
 
-class SingerModel: BaseModel {
+class SingerModel: ZModel {
     
     dynamic var avatar: FileModel?
     dynamic var avatar_id: Int = 0

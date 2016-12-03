@@ -17,10 +17,9 @@
 		0536AF911DF0491100BC070B /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0536AF8F1DF0491100BC070B /* Configuration.swift */; };
 		0536AF921DF0491100BC070B /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0536AF901DF0491100BC070B /* DataSource.swift */; };
 		0536AF951DF0493100BC070B /* StoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0536AF941DF0493100BC070B /* StoreManager.swift */; };
-		058342A01DC35F1500D7689E /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0583429F1DC35F1500D7689E /* APIManager.swift */; };
-		059E6C731DD5FCB3001F5E3A /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059E6C711DD5FCB3001F5E3A /* Model.swift */; };
-		059E6C741DD5FCB3001F5E3A /* StoreModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059E6C721DD5FCB3001F5E3A /* StoreModel.swift */; };
-		05DD0F431DE91B5100DA8FC0 /* APIUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05DD0F421DE91B5100DA8FC0 /* APIUtilities.swift */; };
+		058342A01DC35F1500D7689E /* ZServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0583429F1DC35F1500D7689E /* ZServiceManager.swift */; };
+		059E6C731DD5FCB3001F5E3A /* ZSonStoreModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059E6C711DD5FCB3001F5E3A /* ZSonStoreModel.swift */; };
+		059E6C741DD5FCB3001F5E3A /* ZStoreModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059E6C721DD5FCB3001F5E3A /* ZStoreModel.swift */; };
 		05DD0F471DE92AD000DA8FC0 /* BaseWaterfallCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05DD0F461DE92AD000DA8FC0 /* BaseWaterfallCollectionViewLayout.swift */; };
 		05DD0F491DE92AF700DA8FC0 /* BaseCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05DD0F481DE92AF700DA8FC0 /* BaseCollectionView.swift */; };
 		05DD0F4B1DE92B4C00DA8FC0 /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05DD0F4A1DE92B4C00DA8FC0 /* BaseCollectionViewCell.swift */; };
@@ -33,9 +32,9 @@
 		05F7F4831DD5BEF700D30B62 /* SingerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F7F47D1DD5BEF700D30B62 /* SingerModel.swift */; };
 		05F7F4841DD5BEF700D30B62 /* SongModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F7F47E1DD5BEF700D30B62 /* SongModel.swift */; };
 		05F7F4851DD5BEF700D30B62 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F7F47F1DD5BEF700D30B62 /* UserModel.swift */; };
-		05F7F48C1DD5BF4700D30B62 /* BaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F7F4871DD5BF4700D30B62 /* BaseModel.swift */; };
-		05F7F48D1DD5BF4700D30B62 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F7F4891DD5BF4700D30B62 /* Networking.swift */; };
-		05F7F48E1DD5BF4700D30B62 /* RealmStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F7F48B1DD5BF4700D30B62 /* RealmStore.swift */; };
+		05F7F48C1DD5BF4700D30B62 /* ZModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F7F4871DD5BF4700D30B62 /* ZModel.swift */; };
+		05F7F48D1DD5BF4700D30B62 /* ZNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F7F4891DD5BF4700D30B62 /* ZNetworking.swift */; };
+		05F7F48E1DD5BF4700D30B62 /* ZRealmStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F7F48B1DD5BF4700D30B62 /* ZRealmStore.swift */; };
 		46157DF93012B97D42A119DB /* Pods_RealmManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E3E62EE9F7064389DD305DF /* Pods_RealmManager.framework */; };
 /* End PBXBuildFile section */
 
@@ -64,10 +63,9 @@
 		0536AF8F1DF0491100BC070B /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		0536AF901DF0491100BC070B /* DataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
 		0536AF941DF0493100BC070B /* StoreManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreManager.swift; sourceTree = "<group>"; };
-		0583429F1DC35F1500D7689E /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
-		059E6C711DD5FCB3001F5E3A /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
-		059E6C721DD5FCB3001F5E3A /* StoreModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreModel.swift; sourceTree = "<group>"; };
-		05DD0F421DE91B5100DA8FC0 /* APIUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIUtilities.swift; sourceTree = "<group>"; };
+		0583429F1DC35F1500D7689E /* ZServiceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZServiceManager.swift; sourceTree = "<group>"; };
+		059E6C711DD5FCB3001F5E3A /* ZSonStoreModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZSonStoreModel.swift; sourceTree = "<group>"; };
+		059E6C721DD5FCB3001F5E3A /* ZStoreModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZStoreModel.swift; sourceTree = "<group>"; };
 		05DD0F461DE92AD000DA8FC0 /* BaseWaterfallCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseWaterfallCollectionViewLayout.swift; sourceTree = "<group>"; };
 		05DD0F481DE92AF700DA8FC0 /* BaseCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCollectionView.swift; sourceTree = "<group>"; };
 		05DD0F4A1DE92B4C00DA8FC0 /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -80,9 +78,9 @@
 		05F7F47D1DD5BEF700D30B62 /* SingerModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingerModel.swift; sourceTree = "<group>"; };
 		05F7F47E1DD5BEF700D30B62 /* SongModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongModel.swift; sourceTree = "<group>"; };
 		05F7F47F1DD5BEF700D30B62 /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
-		05F7F4871DD5BF4700D30B62 /* BaseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseModel.swift; sourceTree = "<group>"; };
-		05F7F4891DD5BF4700D30B62 /* Networking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
-		05F7F48B1DD5BF4700D30B62 /* RealmStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmStore.swift; sourceTree = "<group>"; };
+		05F7F4871DD5BF4700D30B62 /* ZModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZModel.swift; sourceTree = "<group>"; };
+		05F7F4891DD5BF4700D30B62 /* ZNetworking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZNetworking.swift; sourceTree = "<group>"; };
+		05F7F48B1DD5BF4700D30B62 /* ZRealmStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZRealmStore.swift; sourceTree = "<group>"; };
 		1E3E62EE9F7064389DD305DF /* Pods_RealmManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RealmManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2ED8D7355531CD0B91FF38D2 /* Pods-RealmManager.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealmManager.release.xcconfig"; path = "Pods/Target Support Files/Pods-RealmManager/Pods-RealmManager.release.xcconfig"; sourceTree = "<group>"; };
 		C7720F4AB2CEC8435169AA95 /* Pods-RealmManager.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealmManager.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RealmManager/Pods-RealmManager.debug.xcconfig"; sourceTree = "<group>"; };
@@ -158,11 +156,10 @@
 			isa = PBXGroup;
 			children = (
 				0536AF931DF0493100BC070B /* DataManager */,
-				05DD0F411DE91B1E00DA8FC0 /* Utilities */,
 				05F7F4861DD5BF4700D30B62 /* Models */,
 				05F7F4881DD5BF4700D30B62 /* Networking */,
 				05F7F48A1DD5BF4700D30B62 /* Realm */,
-				0583429F1DC35F1500D7689E /* APIManager.swift */,
+				0583429F1DC35F1500D7689E /* ZServiceManager.swift */,
 			);
 			path = RealmManager;
 			sourceTree = "<group>";
@@ -198,14 +195,6 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		05DD0F411DE91B1E00DA8FC0 /* Utilities */ = {
-			isa = PBXGroup;
-			children = (
-				05DD0F421DE91B5100DA8FC0 /* APIUtilities.swift */,
-			);
-			path = Utilities;
-			sourceTree = "<group>";
-		};
 		05DD0F451DE92A7B00DA8FC0 /* Base */ = {
 			isa = PBXGroup;
 			children = (
@@ -237,9 +226,9 @@
 		05F7F4861DD5BF4700D30B62 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				059E6C711DD5FCB3001F5E3A /* Model.swift */,
-				059E6C721DD5FCB3001F5E3A /* StoreModel.swift */,
-				05F7F4871DD5BF4700D30B62 /* BaseModel.swift */,
+				059E6C711DD5FCB3001F5E3A /* ZSonStoreModel.swift */,
+				059E6C721DD5FCB3001F5E3A /* ZStoreModel.swift */,
+				05F7F4871DD5BF4700D30B62 /* ZModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -247,7 +236,7 @@
 		05F7F4881DD5BF4700D30B62 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				05F7F4891DD5BF4700D30B62 /* Networking.swift */,
+				05F7F4891DD5BF4700D30B62 /* ZNetworking.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -255,7 +244,7 @@
 		05F7F48A1DD5BF4700D30B62 /* Realm */ = {
 			isa = PBXGroup;
 			children = (
-				05F7F48B1DD5BF4700D30B62 /* RealmStore.swift */,
+				05F7F48B1DD5BF4700D30B62 /* ZRealmStore.swift */,
 			);
 			path = Realm;
 			sourceTree = "<group>";
@@ -432,28 +421,27 @@
 				05DD0F4D1DE92BD300DA8FC0 /* SongCollectionView.swift in Sources */,
 				05F7F4831DD5BEF700D30B62 /* SingerModel.swift in Sources */,
 				0536AF951DF0493100BC070B /* StoreManager.swift in Sources */,
-				05F7F48C1DD5BF4700D30B62 /* BaseModel.swift in Sources */,
-				05F7F48D1DD5BF4700D30B62 /* Networking.swift in Sources */,
+				05F7F48C1DD5BF4700D30B62 /* ZModel.swift in Sources */,
+				05F7F48D1DD5BF4700D30B62 /* ZNetworking.swift in Sources */,
 				05DD0F471DE92AD000DA8FC0 /* BaseWaterfallCollectionViewLayout.swift in Sources */,
 				0508428C1DB20410000D29E9 /* ViewController.swift in Sources */,
 				0536AF911DF0491100BC070B /* Configuration.swift in Sources */,
-				05DD0F431DE91B5100DA8FC0 /* APIUtilities.swift in Sources */,
 				05DD0F511DE940BC00DA8FC0 /* ABViewComtrollerViewController.swift in Sources */,
 				051E83E01DE7EE100033F965 /* Service.swift in Sources */,
 				0508428A1DB20410000D29E9 /* AppDelegate.swift in Sources */,
 				05F7F4851DD5BEF700D30B62 /* UserModel.swift in Sources */,
-				059E6C731DD5FCB3001F5E3A /* Model.swift in Sources */,
+				059E6C731DD5FCB3001F5E3A /* ZSonStoreModel.swift in Sources */,
 				05F7F4801DD5BEF700D30B62 /* ArtistModel.swift in Sources */,
 				05DD0F491DE92AF700DA8FC0 /* BaseCollectionView.swift in Sources */,
 				05DD0F4B1DE92B4C00DA8FC0 /* BaseCollectionViewCell.swift in Sources */,
-				05F7F48E1DD5BF4700D30B62 /* RealmStore.swift in Sources */,
+				05F7F48E1DD5BF4700D30B62 /* ZRealmStore.swift in Sources */,
 				05F7F4841DD5BEF700D30B62 /* SongModel.swift in Sources */,
-				058342A01DC35F1500D7689E /* APIManager.swift in Sources */,
+				058342A01DC35F1500D7689E /* ZServiceManager.swift in Sources */,
 				05F7F4821DD5BEF700D30B62 /* FileModel.swift in Sources */,
 				05DD0F4F1DE92CF300DA8FC0 /* SongCollectionViewCell.swift in Sources */,
 				05F7F4811DD5BEF700D30B62 /* CoverModel.swift in Sources */,
 				0536AF921DF0491100BC070B /* DataSource.swift in Sources */,
-				059E6C741DD5FCB3001F5E3A /* StoreModel.swift in Sources */,
+				059E6C741DD5FCB3001F5E3A /* ZStoreModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

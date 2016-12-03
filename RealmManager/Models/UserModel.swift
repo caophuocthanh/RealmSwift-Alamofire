@@ -10,7 +10,7 @@ import Foundation
 import RealmSwift
 import ObjectMapper
 
-class UserModel: BaseModel {
+class UserModel: ZModel {
     
     dynamic var nickname    : String   = ""
     dynamic var slug        : String   = ""

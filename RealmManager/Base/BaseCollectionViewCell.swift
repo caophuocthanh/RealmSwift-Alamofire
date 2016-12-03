@@ -20,7 +20,7 @@ class BaseCollectionViewCell: UICollectionViewCell {
     
     var viewDelegate: BaseCollectionViewCellDelegate?
     
-    var model: BaseModel? {
+    var model: ZModel? {
         didSet {
             self.layer.shouldRasterize      = true
             self.layer.rasterizationScale   = UIScreen.mainScreen().scale
@@ -67,7 +67,7 @@ extension BaseCollectionViewCell {
         return Utility.className(self)
     }
     
-    class func getCellSize(model: BaseModel) -> CGSize {
+    class func getCellSize(model: ZModel) -> CGSize {
         return CGSizeZero
     }
 }

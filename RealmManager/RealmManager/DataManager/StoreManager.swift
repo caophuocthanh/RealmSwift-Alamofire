@@ -1,5 +1,5 @@
 //
-//  StoreManager.swift
+//  ZStoreManager.swift
 //  RealmManager
 //
 //  Created by Cao Phuoc Thanh on 11/11/16.
@@ -9,17 +9,17 @@
 import UIKit
 import RealmSwift
 
-class StoreManager {
+class ZStoreManager {
     
-    class func local<T: Object where T: BaseModel >(
+    class func local<T: Object where T: ZModel >(
         type: T.Type,
         dataSource: APIDataSouce,
         complete: ((data: [T]?) -> Void)) {
-        let _store = RealmStore.models(StoreModel.self).filter("identifier =='\(dataSource.identifier)'").first
+        let _store = ZRealmStore.models(ZStoreModel.self).filter("identifier =='\(dataSource.identifier)'").first
         if let models = _store?.models {
             var response = [T]()
             for item in  models {
-                if let model = RealmStore.models(T.self).filter("id == \(item.id)").first {
+                if let model = ZRealmStore.models(T.self).filter("id == \(item.id)").first {
                     response.append(model)
                 }
             }
@@ -30,19 +30,19 @@ class StoreManager {
         return
     }
     
-    class func service<T: Object where T: BaseModel >(
+    class func service<T: Object where T: ZModel >(
         type: T.Type,
         dataSource: APIDataSouce,
         complete: ((data: [T]?) -> Void)) {
-        APIManager.request(dataSource) { (data) in
+        ZServiceManager.request(dataSource) { (data) in
             if let data = data.data as? [AnyObject] {
-                let store = StoreModel()
+                let store = ZStoreModel()
                 store.identifier = dataSource.identifier
                 var genericObjects = [T]()
                 for (index, object) in data.enumerate() {
                     let genericObject = T()
                     if let obj:T = genericObject.map(type, value: object) {
-                        RealmStore.add(obj)
+                        ZRealmStore.add(obj)
                         genericObjects.append(obj)
                         store.addNote(type, object: obj, index: index)
                     }
@@ -51,11 +51,11 @@ class StoreManager {
                 complete(data: genericObjects)
                 return
             } else if let data: AnyObject = data.data {
-                let store = StoreModel()
+                let store = ZStoreModel()
                 store.identifier = dataSource.identifier
                 let genericObject = T()
                 if let obj:T = genericObject.map(type, value: data) {
-                    RealmStore.add(obj)
+                    ZRealmStore.add(obj)
                     store.addNote(type, object: obj, index: 0)
                     complete(data: [obj])
                     return
@@ -69,15 +69,15 @@ class StoreManager {
         }
     }
     
-    class func data<T: Object where T: BaseModel >(
+    class func data<T: Object where T: ZModel >(
         type: T.Type,
         dataSource: APIDataSouce,
         local: ((data: [T]?) -> Void),
         service: ((data: [T]?) -> Void)) {
-        StoreManager.local(type, dataSource: dataSource) { (data) in
+        ZStoreManager.local(type, dataSource: dataSource) { (data) in
             local(data: data)
         }
-        StoreManager.service(type, dataSource: dataSource) { (data) in
+        ZStoreManager.service(type, dataSource: dataSource) { (data) in
             service(data: data)
         }
     }
