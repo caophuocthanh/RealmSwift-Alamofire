@@ -1,4 +1,6 @@
-# RealmSwift-Alamofire
+# RealmSwift-Alamofir
+# Swift 3.2
+It's only sample project use RealamSwift and Alamofire. <b>Long time this repo is updated<b>. 
 
 Note: 
 
